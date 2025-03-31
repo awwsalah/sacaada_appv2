@@ -54,8 +54,8 @@ A Flutter application for booking bus tickets, featuring separate admin and cust
 ### 4. Configuration in pubspec.yaml
 
 ```yaml
-name: bus_booking_app
-description: A simple bus transportation booking app.
+name: sacaada_appv2
+description: A bus transportation booking app.
 
 dependencies:
   flutter:
@@ -171,4 +171,5 @@ This project is available under the MIT License. Feel free to modify and distrib
 
 Thank you for using the Simple Bus Transportation Booking App!
 If you encounter any issues or have suggestions, please open an issue or submit a pull request.
+
 # sacaada_appv2
