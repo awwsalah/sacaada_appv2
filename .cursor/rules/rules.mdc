@@ -1,0 +1,77 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+### 🔄 Project Awareness & Context
+- **Always read `PLANNING.md`** at the start of a new conversation to understand the project's architecture, goals, style, and constraints.
+- **Check `TASK.md`** before starting a new task. If the task isn’t listed, add it with a brief description and today's date.
+- **Use consistent naming conventions, file structure, and architecture patterns** as described in `PLANNING.md`.
+## Maintain Project Structure
+
+- Preserve the existing folder organization (models/, services/, pages/, widgets/)
+- Do not relocate files or merge them arbitrarily
+- When adding new files, confirm that they belong to the correct folder based on their function (e.g., UI pages go to pages/, data classes to models/)
+
+## Coding Style & Formatting
+
+- Use Dart's official style guidelines for indentation, naming, and spacing
+- When generating code, rely on auto-formatting (e.g., dart format) to keep consistency
+- Avoid excessively long lines; keep line length under ~100 characters when possible
+
+## Commenting & Documentation
+
+- Provide concise docstrings for classes, methods, and critical functions explaining their purpose
+- Use Dart's triple-slash (///) format for documentation comments
+- Explain non-trivial logic (especially related to authentication flows, seat selection, or Firestore transactions)
+
+## Commit Message Guidelines
+
+- Summarize the key changes succinctly
+- If the commit includes or fixes a bug, reference the related issue or ticket number (if any)
+
+Example commit message format:
+```
+feat: Implement seat selection page with Firestore transaction
+fix: Correct null pointer error in booking_history_page.dart
+```
+
+## Security & Secrets
+
+- Do not expose Firebase API keys or credentials in code suggestions or commits
+- Redact any sensitive information that might appear in the code or logs (e.g., user email or private tokens)
+- If generating .env or config files for demonstration, provide placeholders rather than real secrets
+
+## Firestore & Auth Best Practices
+
+- When suggesting code that writes to Firestore, ensure minimal read/write operations
+- Prefer Firestore transactions or batched writes for seat booking and inventory updates to avoid concurrency issues
+- When handling authentication logic, always check user permissions or roles (e.g., isAdmin) before performing admin actions
+
+## Offline / SQLite Support
+
+- If user requests offline capabilities, generate or update relevant local_db_service.dart code
+- Clearly separate offline (SQLite) logic from Firestore logic to maintain readability
+
+## Error Handling & Edge Cases
+
+- Encourage robust error handling (e.g., try/catch around Firestore calls)
+- Provide fallback or user-friendly messages when an operation fails (e.g., seat booking concurrency conflict)
+- For seat selection, always verify seat availability in real-time to prevent double bookings
+
+## UI/UX Considerations
+
+- Keep the UI minimal and functional unless the user explicitly asks for advanced layouts or theming
+- Suggest modular widgets in widgets/ to reduce duplication across screens
+- Provide meaningful labels, placeholder text, and feedback for form fields (login, register, add bus, etc.)
+
+## Scalability & Future Enhancements
+
+- When adding new features, preserve the app's modular architecture (avoid "spaghetti code")
+- If the AI proposes larger refactors, group them logically into smaller commits to reduce complexity
+- Keep room for future expansions like payment integration, push notifications, or seat maps without breaking current code
+
+## Respect for User's Intent
+
+- When the user's request conflicts with these rules (e.g., they want to store secrets in plain text), gently remind them of best practices, but proceed if they insist – while still warning about potential security risks
+- If a user request violates fundamental security or legal guidelines, disclaim and provide recommended alternatives
